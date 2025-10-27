@@ -16,8 +16,9 @@ rocks_settings:
     large_rocks: # The name doesn't matter.
       seed: ${....seed}
       collections: ["lunalab_rocks"] # Where to get the rock models from.
-      use_point_instancer: True # If True, the rocks will be instanced using the PointInstancer.
-                                # If False, it will use the custom instancer that works for SDG.
+      use_point_instancer:
+        True # If True, the rocks will be instanced using the PointInstancer.
+        # If False, it will use the custom instancer that works for SDG.
       requests: # A list of request used to distribute the rocks.
         req_pos_xy:
           attribute: Position
@@ -93,7 +94,7 @@ terrain_manager:
       x_size: 10.0
       y_size: 6.5
       densities: [0.025, 0.05, 0.5]
-      radius: [[1.5,2.5],[0.75,1.5],[0.25,0.5]]
+      radius: [[1.5, 2.5], [0.75, 1.5], [0.25, 0.5]]
       num_repeat: 0
       seed: ${....seed}
 
@@ -170,12 +171,32 @@ robots_settings:
     #     orientation: [1, 0, 0, 0]
     #   domain_id: 0
     #   target_links: ["front_left_wheel_link", "front_right_wheel_link", "rear_left_wheel_link", "rear_right_wheel_link"]
-    -
-      robot_name: husky
-      usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16.usd              
-      # usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16_mono_depth_imu.usd 
+    - robot_name: ex1
+      #usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16.usd
+      # usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16_mono_depth_imu.usd
+      usd_path: assets/USD_Assets/robots/ex1.usd
       pose:
         position: [5.0, 5.0, 0.5]
         orientation: [1, 0, 0, 0]
       domain_id: 0
-      target_links: ["front_left_wheel_link", "front_right_wheel_link", "rear_left_wheel_link", "rear_right_wheel_link"]
+      # target_links:
+      #   [
+      #     "front_left_wheel_link",
+      #     "front_right_wheel_link",
+      #     "rear_left_wheel_link",
+      #     "rear_right_wheel_link",
+      #   ]
+      target_links:
+        [
+          "ex1/left_front_wheel_link",
+          "ex1/left_rear_wheel_link",
+          "ex1/right_front_wheel_link",
+          "ex1/right_rear_wheel_link",
+        ]
+      # visual_links:
+      #   [
+      #     "ex1/left_front_wheel_link_visual",
+      #     "ex1/left_rear_wheel_link_visual",
+      #     "ex1/right_front_wheel_link_visual",
+      #     "ex1/right_rear_wheel_link_visual",
+      #   ]
