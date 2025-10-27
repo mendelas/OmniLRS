@@ -173,26 +173,26 @@ robots_settings:
     #   target_links: ["front_left_wheel_link", "front_right_wheel_link", "rear_left_wheel_link", "rear_right_wheel_link"]
     - robot_name: ex1
       #usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16.usd
-      # usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16_mono_depth_imu.usd
-      usd_path: assets/USD_Assets/robots/ex1.usd
+      usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16_mono_depth_imu.usd
+      #usd_path: assets/USD_Assets/robots/ex1.usd
       pose:
         position: [5.0, 5.0, 0.5]
         orientation: [1, 0, 0, 0]
       domain_id: 0
-      # target_links:
-      #   [
-      #     "front_left_wheel_link",
-      #     "front_right_wheel_link",
-      #     "rear_left_wheel_link",
-      #     "rear_right_wheel_link",
-      #   ]
       target_links:
         [
-          "ex1/left_front_wheel_link",
-          "ex1/left_rear_wheel_link",
-          "ex1/right_front_wheel_link",
-          "ex1/right_rear_wheel_link",
+          "front_left_wheel_link",
+          "front_right_wheel_link",
+          "rear_left_wheel_link",
+          "rear_right_wheel_link",
         ]
+      # target_links:
+      #   [
+      #     "ex1/left_front_wheel_link",
+      #     "ex1/left_rear_wheel_link",
+      #     "ex1/right_front_wheel_link",
+      #     "ex1/right_rear_wheel_link",
+      #   ]
       # visual_links:
       #   [
       #     "ex1/left_front_wheel_link_visual",

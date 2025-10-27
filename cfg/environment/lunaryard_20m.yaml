@@ -331,8 +331,8 @@ robots_settings:
     #    domain_id: 0
     #    target_links: ["front_left_wheel_link", "front_right_wheel_link", "rear_left_wheel_link", "rear_right_wheel_link"]
     - robot_name: husky
-      #usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16.usd
-      usd_path: assets/USD_Assets/robots/ex1.usd
+      usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16.usd
+      #usd_path: assets/USD_Assets/robots/ex1.usd
       pose:
         position: [5.0, 5.0, 0.5]
         orientation: [1, 0, 0, 0]
