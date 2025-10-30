@@ -114,7 +114,7 @@ terrain_manager:
       x_size: ${....lunaryard_settings.lab_length}
       y_size: ${....lunaryard_settings.lab_width}
       densities: [0.025, 0.05, 0.5]
-      radius: [[1.5,2.5],[0.75,1.5],[0.25,0.5]]
+      radius: [[1.5, 2.5], [0.75, 1.5], [0.25, 0.5]]
       num_repeat: 0
       seed: ${....seed}
 
@@ -126,7 +126,7 @@ terrain_manager:
       min_elevation: -0.5
       z_scale: 1.0
       seed: ${....seed}
-    
+
     deformation_engine:
       enable: False
       delay: 2.0
@@ -140,10 +140,10 @@ terrain_manager:
         x_deform_offset: 0.0
         y_deform_offset: 0.0
         deform_decay_ratio: 0.01
-      boundary_distribution: 
+      boundary_distribution:
         distribution: trapezoidal
         angle_of_repose: 1.047 #pi/3
-      depth_distribution: 
+      depth_distribution:
         distribution: trapezoidal
         wave_frequency: 4.14 # num_grouser/pi (no slip)
       force_depth_regression:
@@ -171,11 +171,16 @@ robots_settings:
   max_robots: 5
   robots_root: "/Robots"
   parameters:
-    -
-      robot_name: husky
+    - robot_name: husky
       usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16.usd
       pose:
         position: [40.0, 40.0, 0.3]
         orientation: [1, 0, 0, 0]
       domain_id: 0
-      target_links: ["front_left_wheel_link", "front_right_wheel_link", "rear_left_wheel_link", "rear_right_wheel_link"]
+      target_links:
+        [
+          "front_left_wheel_link",
+          "front_right_wheel_link",
+          "rear_left_wheel_link",
+          "rear_right_wheel_link",
+        ]
