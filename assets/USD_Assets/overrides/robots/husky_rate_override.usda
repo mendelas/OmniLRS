@@ -1,0 +1,18 @@
+#usda 1.0
+(
+    defaultPrim = "ex1"
+)
+
+def Xform "ex1" (
+    references = @../../robots/ros2_husky_PhysX_vlp16_mono_depth_imu.usd@
+)
+{
+    over "base_link/vlp16/Lidar" {
+        double rotationRate = 10.0
+    }
+
+    # 例: 実際にコピーしたパスが /Robots/ex1/d455/RSD455/Imu_Sensor だった場合
+    over "d455/RSD455/Imu_Sensor" {
+        float sensorPeriod = 0.005   # 200 Hz
+    }
+}
