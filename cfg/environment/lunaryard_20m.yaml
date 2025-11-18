@@ -3,7 +3,7 @@ seed: 42
 
 # physics_dt: 0.0125 # 60 Hz
 # rendering_dt: 0.0333 # 30 Hz
-physics_dt: 0.0333 # 30 Hz
+physics_dt: 0.01 # 100 Hz
 rendering_dt: 0.0333 # 30 Hz
 # physics_dt: 0.0666 # 15 Hz
 # rendering_dt: 0.0666 # 15 Hz
