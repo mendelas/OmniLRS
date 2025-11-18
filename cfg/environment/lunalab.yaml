@@ -1,8 +1,8 @@
 name: Lunalab
 seed: 42
-physics_dt: 0.0333 # 30 Hz
+physics_dt: 0.01 # 100 Hz
 rendering_dt: 0.0333 # 30 Hz
-enforce_realtime: true
+enforce_realtime: false
 
 lunalab_settings: # These settings cannot be changed.
   lab_length: 10.0
@@ -171,9 +171,10 @@ robots_settings:
     #     orientation: [1, 0, 0, 0]
     #   domain_id: 0
     #   target_links: ["front_left_wheel_link", "front_right_wheel_link", "rear_left_wheel_link", "rear_right_wheel_link"]
-    - robot_name: ex1
+    - robot_name: husky
       #usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16.usd
-      usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16_mono_depth_imu.usd
+      #usd_path: assets/USD_Assets/robots/ros2_husky_PhysX_vlp16_mono_depth_imu.usd
+      usd_path: assets/USD_Assets/overrides/robots/husky_rate_override.usda
       #usd_path: assets/USD_Assets/robots/ex1.usd
       pose:
         position: [5.0, 5.0, 0.5]

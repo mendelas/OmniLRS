@@ -15,6 +15,9 @@ import omni
 from isaacsim.core.api.world import World
 import omni.graph.core as og
 from isaacsim.core.utils.stage import add_reference_to_stage
+from omni.kit.app import get_app
+from pxr import Usd
+import time
 from isaacsim.core.utils.transformations import (
     get_relative_transform,
     pose_from_tf_matrix,
@@ -27,6 +30,24 @@ from pxr import Gf, UsdGeom, Usd
 
 from WorldBuilders.pxr_utils import createXform, createObject, setDefaultOps
 from src.configurations.robot_confs import RobotManagerConf
+
+def _kit_tick(n: int = 1):
+    """Omniverse Kit を n フレーム進める（非同期ロード進行用）"""
+    app = get_app()
+    for _ in range(n):
+        app.update()
+
+def _wait_for_prim(path: str, timeout: float = 20.0, poll: float = 0.05):
+    """指定 path の Prim が現れるまで待つ"""
+    stage: Usd.Stage = omni.usd.get_context().get_stage()
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        prim = stage.GetPrimAtPath(path)
+        if prim and prim.IsValid():
+            return
+        _kit_tick(1)         # 1フレーム進める
+        time.sleep(poll)     # 少し待つ
+    raise RuntimeError(f"Prim not ready within timeout: {path}")
 
 
 class RobotManager:
@@ -288,6 +309,7 @@ class Robot:
             position=Gf.Vec3d(*position),
             rotation=Gf.Quatd(*orientation),
         )
+        _kit_tick(30)  # 30フレーム程度回してリファレンス展開を進める
         self.edit_graphs()
 
     def get_pose(self) -> List[float]:
@@ -378,12 +400,16 @@ class RobotRigidGroup:
         world.reset()
         if len(self.target_links) > 0:
             for target_link in self.target_links:
+                prim_path = os.path.join(self.root_path, self.robot_name, target_link)
+                _wait_for_prim(prim_path, timeout=20.0)
                 rigid_prim = SingleRigidPrim(
-                    prim_path=os.path.join(self.root_path, self.robot_name, target_link),
+                    # prim_path=os.path.join(self.root_path, self.robot_name, target_link),
+                    prim_path=prim_path,
                     name=f"{self.robot_name}/{target_link}",
                 )
                 rigid_prim_view = RigidPrim(
-                    prim_paths_expr=os.path.join(self.root_path, self.robot_name, target_link),
+                    #prim_paths_expr=os.path.join(self.root_path, self.robot_name, target_link),
+                    prim_paths_expr=prim_path,
                     name=f"{self.robot_name}/{target_link}_view",
                     track_contact_forces=True,
                 )
