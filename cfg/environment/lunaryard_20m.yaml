@@ -127,8 +127,8 @@ rocks_settings:
             name: ThomasCluster
             randomization_space: 2
             lambda_parent: 0.01 #default 0.25
-            lambda_daughter: 3 #default 5
-            sigma: 0.1 #default 0.05
+            lambda_daughter: 2.0 #default 5
+            sigma: 0.05 #default 0.05
             inherit_parents: True
             seed: ${.......seed}
 
